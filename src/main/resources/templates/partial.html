@@ -1,0 +1,33 @@
+<div class="news" th:each="news : ${news}">
+	<h2 th:text="${news.title}"></h2>	
+	<p class="content" id="cont" th:text="${news.content}"></p>
+	<div>
+		<button th:if="${news.author == name || name == 'admin'}" class="rbtn" onclick="remove(this)" sec:authorize="isAuthenticated()" th:value="${news.id}">Remove</button>
+		<script>
+		// <![CDATA[
+			function remove(btn){
+			    var xhttp = new XMLHttpRequest();
+			    var val = btn.value;
+			    xhttp.open("GET", "/remove/" + val, true);
+			    xhttp.send(); 		
+			}
+		// ]]>
+		</script>
+		<span class="datetime">
+			<p>Published:</p>
+			<p th:text="${news.date}"></p>
+			<p th:text="${news.time}"></p>
+			<p th:text="'by ' + ${news.author}"></p>
+		</span>	
+		<span id="votes">
+			<p>Votes: <span th:id="'vote' + ${news.id}" th:text="${news.votes}"></span></p>
+			<button  class="ubtns" th:id="'ubtn' + ${news.id}" sec:authorize="hasRole('USER')" th:value="${news.id}" onclick="upvote(this)" th:style="${news.color == 1} ? 'background-color: #00ce02; color: white' : ''">Upvote</button>
+			<button  class="dbtns" th:id="'dbtn' + ${news.id}" sec:authorize="hasRole('USER')" th:value="${news.id}" onclick="downvote(this)" th:style="${news.color == -1} ? 'background-color: red; color: white' : ''">Downvote</button>
+		</span>
+		
+	</div>
+	<div class="clear"></div>
+</div>
+
+        
+

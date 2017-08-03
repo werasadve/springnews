@@ -1,0 +1,95 @@
+nav{
+	top: 0;
+	z-index: 2;
+	width: 100%;
+	background-color: white;
+	min-height: 65px;
+	position: fixed;
+	box-shadow: 0px 1px 10px grey;
+}
+ul{
+	width: 95%;
+	max-width: 1500px;
+	margin: 0 auto;
+	list-style-type: none;
+}
+ul div{
+	float: right;
+}
+li{
+	margin-top: 8px;
+	float: left;
+}
+li h1{
+	margin-top: -5px;
+	color: grey;
+	cursor: default;
+	font-weight: 100;
+	font-size: 40px;
+}
+li h1 span{
+	color: #83f466;
+}
+li h1 a{
+	padding: 0;
+}
+#input{
+	margin-left: 35px;
+	margin-top: 15px;
+}
+li input{
+	border: none;
+	border-bottom: 2px solid green;
+	padding: 7px;
+	outline: none;
+	font-size: 14px;
+}
+#name{
+	padding: 10px 20px 10px 20px;
+	cursor: default;
+}
+#name span{
+	text-decoration: underline;
+}
+li a{
+	padding: 10px 20px 10px 20px;
+	text-decoration: none;
+	float: left;
+	color: black;
+	cursor: pointer;
+}
+div li a:hover{
+	border-bottom: 1px solid green;
+}
+@media (max-width: 800px){
+	ul{
+		width: 100%;
+	}
+	li a{
+		padding-right: 5px;
+		padding-left: 5px;
+	}
+	#name{
+		padding-left: 5px;
+		padding-right: 5px;
+	}
+	#input input{
+		width: 120px;
+	}
+}
+@media (max-width: 450px){
+	li{
+		font-size: 16px;
+	}
+	nav h1{
+		padding-left: 5px;
+		font-size: 20px;
+		margin-top: 7px;
+	}
+	#input{
+		margin-left: 25px;
+	}
+	li input{
+		padding: 2px;
+	}
+}
