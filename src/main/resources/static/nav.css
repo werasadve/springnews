@@ -78,6 +78,9 @@ div li a:hover{
 	}
 }
 @media (max-width: 450px){
+	nav{
+		margin-bottom: 15px;
+	}
 	li{
 		font-size: 16px;
 	}

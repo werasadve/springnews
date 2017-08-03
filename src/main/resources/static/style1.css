@@ -78,7 +78,6 @@ h2{
 	border-radius: 13px;
 	outline: none;
 	color: white;
-	transition: all 0.2s;
 }
 #votes button:nth-child(2){
 	border: grey;

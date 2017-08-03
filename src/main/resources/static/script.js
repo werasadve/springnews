@@ -34,7 +34,6 @@ function upvote(btn){
     }
     xhttp.open("GET", "/upvote/" + btn.value, true);
     xhttp.send(); 
-    btn.blur();
 }
 
 function downvote(btn){
@@ -48,6 +47,5 @@ function downvote(btn){
     }
     xhttp.open("GET", "/downvote/" + btn.value, true);
     xhttp.send(); 
-    btn.blur();
 }
 
