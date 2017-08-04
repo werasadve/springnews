@@ -32,7 +32,7 @@
 			<li><h1><a href="/" th:action="@{/}"><span>Spring</span>News</a></h1></li>
 			<div>
 				<li><a id="logout" sec:authorize="isAuthenticated()">Log out</a></li>
-				<li id="name" sec:authorize="isAuthenticated()">Logged in as: <span th:text="${name}"></span></li>
+				<li sec:authorize="isAuthenticated()"><p th:text="${name}"></p></li>
 			</div>
 		</ul>
 	</nav>

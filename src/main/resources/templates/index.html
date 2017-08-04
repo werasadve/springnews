@@ -6,14 +6,15 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 	<link rel="stylesheet" href="nav.css"/>
 	<link rel="stylesheet" href="style1.css"/>
+	<link href="https://fonts.googleapis.com/css?family=Raleway:100" rel="stylesheet"/>
 	<script src="/poll.js"></script>
 	<script src="/script.js"></script>
 </head>
 <body>
 	<nav>
 		<ul>
-			<li><h1><a th:href="@{/}"><span>Spring</span>News</a></h1></li>
-			<li id="input"><input type="search" oninput="search(this)" placeholder="Search news"/></li>
+			<li id="title"><h1><a th:href="@{/}"><span>Spring</span>News</a></h1></li>
+			<li id="input"><input type="text" oninput="search(this)" placeholder="Search news"/></li>
 			<script>
 				// <![CDATA[
 					function search(s){
@@ -36,12 +37,26 @@
 					}
 				// ]]>
 				</script>
-			<div>
+			<div class="topnav">
 				<li sec:authorize="isAuthenticated()"><a th:href="@{/create}">Add</a></li>
 				<li><a href="/login" sec:authorize="isAnonymous()">Log in</a></li>
 				<li><a href="/logout" sec:authorize="isAuthenticated()">Log out</a></li>
-				<li id="name" sec:authorize="isAuthenticated()">Logged in as: <span th:text="${name}"></span></li>
+				<li sec:authorize="isAuthenticated()"><p th:text="${name}"></p></li>
 			</div>
+			<li id="show" onclick="show()">&#9776;</li>
+			<script>
+				// <![CDATA[
+					function show() {
+					    var x = document.querySelector("nav div");
+					    if (x.className === "topnav") {
+					        x.className += " responsive";
+					    }
+					    else {
+					        x.className = "topnav";
+					    }
+					}				 
+				// ]]>
+				</script>
 		</ul>
 	</nav>
 	<main id="main">
@@ -61,7 +76,6 @@
 				// ]]>
 				</script>
 				<span class="datetime">
-					<p>Published:</p>
 					<p th:text="${news.date}"></p>
 					<p th:text="${news.time}"></p>
 					<p th:text="'by ' + ${news.author}"></p>

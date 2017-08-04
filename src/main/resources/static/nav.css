@@ -1,31 +1,35 @@
 nav{
 	top: 0;
-	z-index: 2;
 	width: 100%;
-	background-color: white;
 	min-height: 65px;
 	position: fixed;
-	box-shadow: 0px 1px 10px grey;
+	z-index: 2;
+	background-color: white;
+	border-bottom: 1px solid #c7cacc;
 }
 ul{
-	width: 95%;
+	width: 98%;
 	max-width: 1500px;
 	margin: 0 auto;
 	list-style-type: none;
 }
-ul div{
-	float: right;
-}
-li{
-	margin-top: 8px;
+ul li{
+	height: 100%;
 	float: left;
+	font-size: 18px;
+}
+
+nav #title{
+	border-right: 1px solid #c7cacc;
+	height: 65px;
+	padding-right: 12px;
+	margin-top: 0px;
 }
 li h1{
-	margin-top: -5px;
 	color: grey;
-	cursor: default;
 	font-weight: 100;
-	font-size: 40px;
+	font-size: 35px;
+	margin-top: 12px;
 }
 li h1 span{
 	color: #83f466;
@@ -33,66 +37,47 @@ li h1 span{
 li h1 a{
 	padding: 0;
 }
+
 #input{
-	margin-left: 35px;
-	margin-top: 15px;
+	width: 235px;
+	margin-left: 10px;
+	height: 65px;
 }
 li input{
 	border: none;
-	border-bottom: 2px solid green;
-	padding: 7px;
+	height: 100%;
 	outline: none;
-	font-size: 14px;
+	font-size: 40px;
+	font-family: 'Raleway', sans-serif;
+	width: 100%;	
 }
-#name{
-	padding: 10px 20px 10px 20px;
-	cursor: default;
+
+ul div{
+	float: right;
+	height: 65px;
 }
-#name span{
-	text-decoration: underline;
+li p{
+	margin: 20px 10px 0px 20px;
+	padding: 2px 10px;
+	background-color: #00ce02;
+	border-radius: 20px;
+	color: white;
 }
 li a{
-	padding: 10px 20px 10px 20px;
+	padding: 20px;
+	margin-top: 2px;
 	text-decoration: none;
 	float: left;
 	color: black;
 	cursor: pointer;
+	transition: all 0.3s;
 }
 div li a:hover{
-	border-bottom: 1px solid green;
+	box-shadow: 0px 0px 4px grey;
 }
-@media (max-width: 800px){
-	ul{
-		width: 100%;
-	}
-	li a{
-		padding-right: 5px;
-		padding-left: 5px;
-	}
-	#name{
-		padding-left: 5px;
-		padding-right: 5px;
-	}
-	#input input{
-		width: 120px;
-	}
-}
-@media (max-width: 450px){
-	nav{
-		margin-bottom: 15px;
-	}
-	li{
-		font-size: 16px;
-	}
-	nav h1{
-		padding-left: 5px;
-		font-size: 20px;
-		margin-top: 7px;
-	}
-	#input{
-		margin-left: 25px;
-	}
-	li input{
-		padding: 2px;
-	}
+#show{
+	float: right;
+	padding: 25px 7px 17px 10px;
+	margin: 0;
+	display: none;
 }
