@@ -26,7 +26,6 @@ nav #title{
 	margin-top: 0px;
 }
 li h1{
-	color: grey;
 	font-weight: 100;
 	font-size: 35px;
 	margin-top: 12px;
@@ -36,10 +35,11 @@ li h1 span{
 }
 li h1 a{
 	padding: 0;
+	color: grey;
 }
 
 #input{
-	width: 235px;
+	width: 40%;
 	margin-left: 10px;
 	height: 65px;
 }

@@ -55,7 +55,7 @@ main p{
 	font-weight: bold;
 	background-color: white;
 	border-radius: 50%;
-	color: black;
+	color: #6b6b6b;
 }
 #votes button{
 	margin: 3px;
@@ -167,5 +167,7 @@ main p{
 		top: 66px;
 		right: 0;
 		background-color: white;
+		border-left: 1px solid grey;
+		border-bottom: 1px solid grey;
 	}
 }
