@@ -7,7 +7,6 @@
 	<link rel="stylesheet" href="nav.css"/>
 	<link rel="stylesheet" href="style1.css"/>
 	<link href="https://fonts.googleapis.com/css?family=Raleway:100" rel="stylesheet"/>
-	<script src="/poll.js"></script>
 	<script src="/script.js"></script>
 </head>
 <body>
@@ -60,21 +59,12 @@
 		</ul>
 	</nav>
 	<main id="main">
-		<div class="news" th:each="news : ${news}">
+		<div class="news" th:each="news : ${news}" th:id="${'n' + news.id}">
 			<h2 th:text="${news.title}"></h2>	
 			<p class="content" id="cont" th:text="${news.content}"></p>
 			<div>
 				<button th:if="${news.author == name || name == 'admin'}" class="rbtn" onclick="remove(this)" sec:authorize="isAuthenticated()" th:value="${news.id}">Remove</button>
-				<script>
-				// <![CDATA[
-					function remove(btn){
-					    var xhttp = new XMLHttpRequest();
-					    var val = btn.value;
-					    xhttp.open("GET", "/remove/" + val, true);
-					    xhttp.send(); 		
-					}
-				// ]]>
-				</script>
+				
 				<span class="datetime">
 					<p th:text="${news.date}"></p>
 					<p th:text="${news.time}"></p>
@@ -89,5 +79,6 @@
 			<div class="clear"></div>
 		</div>
 	</main>
+	<script src="/poll.js"></script>
 </body>
 </html>

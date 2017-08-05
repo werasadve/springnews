@@ -7,10 +7,12 @@ import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpRequest;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -96,20 +98,22 @@ public class ViewController {
 	
 	@GetMapping("/pollnews")
 	@ResponseBody
-	public Callable<ModelAndView> poll(Model model){
-		return new Callable<ModelAndView>() {
+	public Callable<Object> poll(Model model){
+		return new Callable<Object>() {
 
 			@Override
-			public ModelAndView call() throws Exception {
+			public Object call() throws Exception {
 				int init = newsService.getAllNews().size();
 				int real = init;
 				int count = 0;
 				while(count < 151){
 					real = newsService.getAllNews().size();
-					if(init != real){
-						model.addAttribute("news", newsService.getAllNews());
+					if(init < real){
+						model.addAttribute("news", newsService.getAllNews().get(0));
 						return new ModelAndView("partial");
 					}
+					else if(init > real)
+						return newsService.getDeletedId();
 					else{
 						count++;
 						Thread.sleep(200);

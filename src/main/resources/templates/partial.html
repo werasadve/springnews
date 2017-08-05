@@ -1,18 +1,8 @@
-<div class="news" th:each="news : ${news}">
+<div class="news" th:each="news : ${news}" th:id="${'n' + news.id}">
 	<h2 th:text="${news.title}"></h2>	
 	<p class="content" id="cont" th:text="${news.content}"></p>
 	<div>
 		<button th:if="${news.author == name || name == 'admin'}" class="rbtn" onclick="remove(this)" sec:authorize="isAuthenticated()" th:value="${news.id}">Remove</button>
-		<script>
-		// <![CDATA[
-			function remove(btn){
-			    var xhttp = new XMLHttpRequest();
-			    var val = btn.value;
-			    xhttp.open("GET", "/remove/" + val, true);
-			    xhttp.send(); 		
-			}
-		// ]]>
-		</script>
 		<span class="datetime">
 			<p th:text="${news.date}"></p>
 			<p th:text="${news.time}"></p>

@@ -20,6 +20,8 @@ public class NewsService {
 	
 	private int num = 4;
 	
+	private int deletedId;
+	
 	public List<News> getAllNews(){
 		newsRepository.getAllNews().sort((n1, n2) -> n2.getId() - n1.getId());
 		return newsRepository.getAllNews();
@@ -43,6 +45,7 @@ public class NewsService {
 	
 	public void removeNewsById(int id){
 		newsRepository.remove(id);
+		deletedId = id;
 	}
 	
 	public int getVotes(int id){
@@ -57,6 +60,10 @@ public class NewsService {
 		DateTimeFormatter formater2 = DateTimeFormatter.ofPattern("HH:mm");
 		newn.setTime(LocalTime.now(ZoneId.of("Europe/Zagreb")).format(formater2));
 		newsRepository.addNews(newn);
+	}
+	
+	public int getDeletedId(){
+		return deletedId;
 	}
 
 }

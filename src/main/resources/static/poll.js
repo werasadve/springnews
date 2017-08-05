@@ -1,10 +1,21 @@
-window.onload = poll();
-
-function poll(){
+window.onload = function poll(){
 	xhr = new XMLHttpRequest();
 	xhr.onreadystatechange = function(){
 		if(this.readyState == 4 && this.status == 200){
-			document.getElementById("main").innerHTML = this.responseText;
+			var r = this.responseText;
+			var main = document.querySelector("main");
+			if(r.length > 5){
+				var q = document.createElement("div");
+				q.innerHTML = r;
+				main.prepend(q);
+			}
+			else{
+				var news = document.getElementsByClassName("news");
+				for(i = 0; i < news.length; i++){
+					if(news[i].id === "n" + r)
+						news[i].remove();
+				}
+			}				
 			poll();
 		}
 	}
@@ -15,3 +26,11 @@ function poll(){
 	}
 	xhr.send();
 }
+
+function remove(btn){
+    var xhttp = new XMLHttpRequest();
+    var val = btn.value;   
+    xhttp.open("GET", "/remove/" + val, true);
+    xhttp.send(); 		
+}
+
