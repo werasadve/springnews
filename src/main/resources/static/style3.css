@@ -21,11 +21,7 @@ main h1{
 	border: none;
 	transition: all 0.2s;
 }
-.input:focus{
-	background-color: white;
-	box-shadow: 0px 3px 5px #bfbfbf;
-}
-.input:hover{
+.input:focus, .input:hover{
 	background-color: white;
 	box-shadow: 0px 3px 5px #bfbfbf;
 }
