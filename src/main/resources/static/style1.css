@@ -65,14 +65,7 @@ main p{
 	font-weight: bold;
 	border-radius: 13px;
 	outline: none;
-}
-#votes button:nth-child(2){
-	border: grey;
-	color: black;
-}
-#votes button:nth-child(3){
-	border: grey;
-	color: black;
+	border: none;
 }
 #votes button:nth-child(2):hover{
 	cursor: pointer;
@@ -87,7 +80,6 @@ main p{
 .datetime{
 	text-align: right;
 	float: right;
-	
 }
 .datetime p{
 	font-size: 13px;
@@ -113,7 +105,7 @@ main p{
 	clear: both;
 }
 @media (max-width: 720px){
-	main{
+	main, nav ul{
 		width: 100%;
 	}
 	.news{
@@ -130,9 +122,6 @@ main p{
 	#votes button{
 		min-width: 70px;
 	}
-	nav ul{
-		width: 100%;
-	}
 	#input{
 		width: 165px;
 		margin-left: 2px;
@@ -140,7 +129,6 @@ main p{
 	nav #title{
 	 	padding-right: 2px;
 	}	
-	
 	nav{
 		height: 63px;
 	}
@@ -167,7 +155,7 @@ main p{
 		top: 66px;
 		right: 0;
 		background-color: white;
-		border-left: 1px solid grey;
-		border-bottom: 1px solid grey;
+		border-left: 1px solid #bfbfbf;
+		border-bottom: 1px solid #bfbfbf;
 	}
 }

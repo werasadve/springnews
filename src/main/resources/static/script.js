@@ -1,11 +1,3 @@
-window.onload = function(){
-	document.querySelector("main").addEventListener("click", function(){
-		var x = document.querySelector("nav div");
-	    if (x.className != "topnav") {
-	        x.className = "topnav";
-	    }
-	});
-}
 function color(res, btn){
 	 var b1 = document.getElementById("ubtn" + btn.value);
      var b2 = document.getElementById("dbtn" + btn.value);
