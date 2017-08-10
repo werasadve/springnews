@@ -32,6 +32,8 @@ public class ViewController {
 	@Autowired
 	private VotingService voting;
 	
+	private boolean initDone = false;
+	
 	@ModelAttribute("name")
 	public String name(Authentication auth){
 		if(auth != null)
@@ -44,6 +46,10 @@ public class ViewController {
 		if(auth != null){
 			voting.setColors(auth.getName());
 		}
+		if(!initDone){
+			newsService.init();
+			initDone = true;
+		}			
 		model.addAttribute("news", newsService.getAllNews());
 		return "index";
 	}
@@ -102,16 +108,16 @@ public class ViewController {
 			@Override
 			public Object call() throws Exception {
 				int init = newsService.getAllNews().size();
-				int real = init;
 				int count = 0;
 				while(count < 151){
-					real = newsService.getAllNews().size();
-					if(init < real){
+					
+					if(newsService.getNewsCount() > init){
 						model.addAttribute("news", newsService.getAllNews().get(0));
 						return new ModelAndView("partial");
 					}
-					else if(init > real)
+					else if(init > newsService.getNewsCount()){
 						return newsService.getDeletedId();
+					}
 					else{
 						count++;
 						Thread.sleep(200);

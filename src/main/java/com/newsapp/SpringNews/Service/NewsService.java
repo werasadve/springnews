@@ -11,7 +11,6 @@ import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.newsapp.SpringNews.Controller.ViewController;
 import com.newsapp.SpringNews.Entity.News;
 import com.newsapp.SpringNews.Repo.NewsRepository;
 import com.newsapp.SpringNews.Repo.VotesRepository;
@@ -27,6 +26,8 @@ public class NewsService {
 	private VotesRepository votesRepository;
 	
 	private long deletedId;
+	
+	private long newsCount;
 	
 	public List<News> getAllNews(){
 		List<News> n = newsRepository.findAll();
@@ -57,6 +58,7 @@ public class NewsService {
 		newsRepository.delete(id);
 		votesRepository.findByNewsId(id).stream().forEach(v -> votesRepository.delete(v.getId()));
 		deletedId = id;
+		--newsCount;
 	}
 	
 	public int getVotes(int id){
@@ -70,10 +72,19 @@ public class NewsService {
 		DateTimeFormatter formater2 = DateTimeFormatter.ofPattern("HH:mm");
 		newn.setTime(LocalTime.now(ZoneId.of("Europe/Zagreb")).format(formater2));
 		newsRepository.save(newn);
+		++newsCount;
 	}
 	
 	public long getDeletedId(){
 		return deletedId;
+	}
+	
+	public long getNewsCount() {
+		return newsCount;
+	}
+
+	public void init() {
+		this.newsCount = newsRepository.count();
 	}
 
 }
