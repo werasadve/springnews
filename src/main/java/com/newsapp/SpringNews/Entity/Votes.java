@@ -1,10 +1,19 @@
 package com.newsapp.SpringNews.Entity;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
+@Entity
 public class Votes {
 
+	@Id
 	private int id;
 	private String user;
 	private int f;
+	
+	public Votes(){}
 	
 	public Votes(int id, String user, int f) {
 		this.id = id;
@@ -30,5 +39,4 @@ public class Votes {
 	public void setF(int f) {
 		this.f = f;
 	}
-	
 }

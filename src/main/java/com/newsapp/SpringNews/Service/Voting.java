@@ -20,9 +20,9 @@ public class Voting {
 	VotesRepository votesRepository;
 	
 	public String upvote(int id, String user){
-		Votes vote = votesRepository.getVoteByIdAndUser(id, user);
+		Votes vote = votesRepository.findByIdAndUser(id, user);
 		if(vote == null){
-			votesRepository.add(new Votes(id, user, 1));
+			votesRepository.save(new Votes(id, user, 1));
 			newsService.upvote(id);
 		}
 		else{
@@ -41,15 +41,15 @@ public class Voting {
 				vote.setF(1);
 				break;
 			}
-			
+			votesRepository.save(vote);
 		}
 		return newsService.getVotes(id) + "," + (vote != null ? vote.getF() : 1);
 	}
 	
 	public String downvote(int id, String user){
-		Votes vote = votesRepository.getVoteByIdAndUser(id, user);
+		Votes vote = votesRepository.findByIdAndUser(id, user);
 		if(vote == null){
-			votesRepository.add(new Votes(id, user, -1));
+			votesRepository.save(new Votes(id, user, -1));
 			newsService.downvote(id);
 		}
 		else{
@@ -68,17 +68,23 @@ public class Voting {
 				vote.setF(0);
 				break;
 			}
+			votesRepository.save(vote);
 		}
 		return newsService.getVotes(id) + "," + (vote != null ? vote.getF() : -1);
 	}	
 	
+	public List<Votes> getAllVotes(){
+		return votesRepository.findAll();
+	}
+	
 	public void setColors(String user){
-		List<Votes> votes = votesRepository.getAllVotes().stream().filter((u) -> u.getUser().equals(user)).collect(Collectors.toList());   
+		List<Votes> votes = votesRepository.findAll().stream().filter((u) -> u.getUser().equals(user)).collect(Collectors.toList());   
 		for(News n : newsService.getAllNews()){
 			n.setColor(0);
 			for(Votes v : votes)
 				if(n.getId() == v.getId())
 					n.setColor(v.getF());
+
 		}
 	}
 
