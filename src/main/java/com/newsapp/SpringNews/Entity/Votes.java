@@ -9,18 +9,19 @@ import javax.persistence.Id;
 public class Votes {
 
 	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int id;
+	private int newsId;
 	private String user;
 	private int f;
 	
 	public Votes(){}
 	
-	public Votes(int id, String user, int f) {
-		this.id = id;
+	public Votes(int newsId, String user, int f) {
+		this.newsId = newsId;
 		this.user = user;
 		this.f = f;
 	}
-	
 	public int getId() {
 		return id;
 	}
@@ -38,5 +39,11 @@ public class Votes {
 	}
 	public void setF(int f) {
 		this.f = f;
+	}
+	public int getNewsId() {
+		return newsId;
+	}
+	public void setNewsId(int newsId) {
+		this.newsId = newsId;
 	}
 }

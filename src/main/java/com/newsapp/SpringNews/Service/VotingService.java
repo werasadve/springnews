@@ -11,7 +11,7 @@ import com.newsapp.SpringNews.Entity.Votes;
 import com.newsapp.SpringNews.Repo.VotesRepository;
 
 @Service
-public class Voting {
+public class VotingService {
 	
 	@Autowired
 	NewsService newsService;
@@ -20,7 +20,7 @@ public class Voting {
 	VotesRepository votesRepository;
 	
 	public String upvote(int id, String user){
-		Votes vote = votesRepository.findByIdAndUser(id, user);
+		Votes vote = votesRepository.findByNewsIdAndUser(id, user);
 		if(vote == null){
 			votesRepository.save(new Votes(id, user, 1));
 			newsService.upvote(id);
@@ -47,7 +47,7 @@ public class Voting {
 	}
 	
 	public String downvote(int id, String user){
-		Votes vote = votesRepository.findByIdAndUser(id, user);
+		Votes vote = votesRepository.findByNewsIdAndUser(id, user);
 		if(vote == null){
 			votesRepository.save(new Votes(id, user, -1));
 			newsService.downvote(id);
@@ -82,7 +82,7 @@ public class Voting {
 		for(News n : newsService.getAllNews()){
 			n.setColor(0);
 			for(Votes v : votes)
-				if(n.getId() == v.getId())
+				if(n.getId() == v.getNewsId())
 					n.setColor(v.getF());
 
 		}

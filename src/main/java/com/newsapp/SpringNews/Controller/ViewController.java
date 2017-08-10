@@ -21,7 +21,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.newsapp.SpringNews.Entity.News;
 import com.newsapp.SpringNews.Service.NewsService;
-import com.newsapp.SpringNews.Service.Voting;
+import com.newsapp.SpringNews.Service.VotingService;
 
 @Controller
 public class ViewController {
@@ -30,7 +30,7 @@ public class ViewController {
 	private NewsService newsService;		
 	
 	@Autowired
-	private Voting voting;
+	private VotingService voting;
 	
 	@ModelAttribute("name")
 	public String name(Authentication auth){

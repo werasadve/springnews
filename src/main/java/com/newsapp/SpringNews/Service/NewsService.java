@@ -55,7 +55,7 @@ public class NewsService {
 	@Transactional
 	public void removeNewsById(int id){
 		newsRepository.delete(id);
-		votesRepository.findById(id).stream().forEach(v -> votesRepository.delete(v.getId()));
+		votesRepository.findByNewsId(id).stream().forEach(v -> votesRepository.delete(v.getId()));
 		deletedId = id;
 	}
 	

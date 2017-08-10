@@ -10,8 +10,8 @@ import com.newsapp.SpringNews.Entity.Votes;
 @Repository
 public interface VotesRepository extends JpaRepository<Votes, Integer>{
 	
-	Votes findByIdAndUser(int id, String user);
+	Votes findByNewsIdAndUser(int newsId, String user);
 	
-	List<Votes> findById(int id);
+	List<Votes> findByNewsId(int newsId);
 	
 }
