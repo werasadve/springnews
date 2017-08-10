@@ -1,0 +1,42 @@
+window.onload = function poll(){
+	document.querySelector("main").addEventListener("click", function(){
+		var x = document.querySelector("nav div");
+	    if (x.className != "topnav") {
+	        x.className = "topnav";
+	    }
+	});
+	xhr = new XMLHttpRequest();
+	xhr.onreadystatechange = function(){
+		if(this.readyState == 4 && this.status == 200){
+			var r = this.responseText;
+			var main = document.querySelector("main");
+			if(r.length > 5){
+				var q = document.createElement("div");
+				q.innerHTML = r;
+				main.prepend(q);
+			}
+			else{
+				var news = document.getElementsByClassName("news");
+				for(i = 0; i < news.length; i++){
+					if(news[i].id === "n" + r)
+						news[i].remove();
+				}
+			}				
+			poll();
+		}
+	}
+	xhr.open("GET", "/pollnews", true);
+	xhr.timeout = 30000;
+	xhr.ontimeout = function(){
+		poll();
+	}
+	xhr.send();
+}
+
+function remove(btn){
+    var xhttp = new XMLHttpRequest();
+    var val = btn.value;   
+    xhttp.open("GET", "/remove/" + val, true);
+    xhttp.send(); 		
+}
+
