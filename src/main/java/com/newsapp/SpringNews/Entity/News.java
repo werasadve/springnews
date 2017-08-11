@@ -27,16 +27,6 @@ public class News {
 	
 	public News() {}	
 	
-	public News(int id, int votes, String title, String content, String author, String date, String time) {
-		this.id = id;
-		this.votes = votes;
-		this.title = title;
-		this.content = content;
-		this.author = author;
-		this.date = date;
-		this.time = time;
-	}
-	
 	public int getId() {
 		return this.id;
 	}

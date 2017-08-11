@@ -30,8 +30,7 @@ public class NewsService {
 	private long newsCount;
 	
 	public List<News> getAllNews(){
-		List<News> n = newsRepository.findAll();
-		n.sort((n1, n2) -> n2.getId() - n1.getId());
+		List<News> n = newsRepository.findAllByOrderByIdDesc();
 		return n;
 	}
 	
