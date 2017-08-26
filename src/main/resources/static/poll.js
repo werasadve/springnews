@@ -33,6 +33,12 @@ window.onload = function poll(){
 	xhr.send();
 }
 
+var cont = document.querySelectorAll(".content");
+for(var i = 0; i < cont.length; i++){
+	var col = 'hsl(' + 360 * Math.random() + ',' + '100%,' + '50%)';
+	cont[i].style.borderLeft = "2px solid " + col;
+}
+
 function remove(btn){
     var xhttp = new XMLHttpRequest();
     var val = btn.value;   
