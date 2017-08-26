@@ -22,11 +22,11 @@ main{
 	padding-top: 10px;
 }
 h2{
-	text-decoration: underline;
 	font-weight: 100;
 	word-wrap: break-word;
 }
 #cont{
+	color: #272727;
 	line-height: 30px;
 }
 main p{
@@ -115,10 +115,10 @@ main p{
 		margin-left: 0px;
 	}
 	h2{
-		font-size: 19px;
+		font-size: 20px;
 	}
 	#cont{
-		font-size: 17px;
+		font-size: 18px;
 		padding: 3px;
 	}
 	.rbtn{
@@ -126,10 +126,6 @@ main p{
 	}
 	#votes button{
 		min-width: 70px;
-	}
-	#input{
-		width: 165px;
-		margin-left: 2px;
 	}
 	nav #title{
 	 	padding-right: 2px;

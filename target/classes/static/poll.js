@@ -1,10 +1,10 @@
 window.onload = function poll(){
-	document.querySelector("main").addEventListener("click", function(){
+	document.querySelector("main").onclick = () => {
 		var x = document.querySelector("nav div");
 	    if (x.className != "topnav") {
 	        x.className = "topnav";
 	    }
-	});
+	}
 	xhr = new XMLHttpRequest();
 	xhr.onreadystatechange = function(){
 		if(this.readyState == 4 && this.status == 200){
