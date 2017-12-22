@@ -63,7 +63,7 @@
 			<h2 th:text="${news.title}"></h2>	
 			<p class="content" id="cont" th:text="${news.content}"></p>
 			<div>
-				<button th:if="${news.author == name || name == 'admin'}" class="rbtn" onclick="remove(this)" sec:authorize="isAuthenticated()" th:value="${news.id}">Remove</button>
+				<button th:if="${news.author == name || name == 'admin'}" class="rbtn" onclick="remove(this)" th:value="${news.id}">Remove</button>
 				<span id="votes">
 					<p><span th:id="'vote' + ${news.id}" th:text="${news.votes}"></span></p>
 					<button  class="ubtns" th:id="'ubtn' + ${news.id}" sec:authorize="hasRole('USER')" th:value="${news.id}" onclick="upvote(this)" th:style="${news.color == 1} ? 'background-color: #00ce02; color: white' : ''">Upvote</button>
